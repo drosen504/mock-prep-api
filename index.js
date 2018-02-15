@@ -6,13 +6,14 @@
 const baseUrl = 'https://api.lyrics.ovh/v1/';
 
 function getDataFromApi(artist, title, callback) {
-  let searchString = `${artist}/${title}`;
+  let searchString = `${baseUrl}${artist}/${title}`;
   console.log(searchString);
-  $.getJSON(baseUrl, searchString, callback);
+  $.getJSON(searchString, callback);
 }
   
 function displaySearchData(data) {
-  console.log('Time to display the results!');
+  console.log(data.lyrics);
+  $('.js-search-results').html(`${data.lyrics}`);
 }
   
 function watchSubmit() {
